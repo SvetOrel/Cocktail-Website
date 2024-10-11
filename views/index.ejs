@@ -8,8 +8,24 @@
     </head>
     <body>
         <h1>Here is your random Daily Cocktail</h1>
-        <!-- <% if(data){ %>
-            <%= data %>
-        <% } %> -->
+        <% if(locals.cocktail){ %>
+            <h3><%= cocktail.strDrink %></h3>
+            <img src="<%= cocktail.strDrinkThumb %>" alt="<%= cocktail.strDrink %>" style="width: 200px;">
+            <p><%= cocktail.strInstructions %></p>
+            <h4>Glass:</h4>
+            <p><%= cocktail.strGlass %></p>
+            <h4>Ingredients:</h4>
+            <% if(locals.ingretientsList){ %>
+                <ul>
+                    <% ingretientsList.forEach(ingredient => { %>
+                        <li><%= ingredient %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
+        <% } %>
+        <form action="/search" method="GET">
+            <input type="text" name="name" placeholder="Enter cocktail name" required>
+            <button type="submit">Search</button>
+        </form>
     </body>
 </html>
